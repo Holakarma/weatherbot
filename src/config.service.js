@@ -3,17 +3,21 @@ import 'dotenv/config';
 
 export class ConfigService {
     constructor() {
-        const { error, parsed } = config();
-        if (error) {
-            throw new Error(`Failed to load .env variables: ${error.message}`);
-        }
-        if (!parsed) {
-            throw new Error(`Failed to load .env variables`);
-        }
-        this.config = parsed;
         if (process.env.RENDER === 'true') {
             console.log('render.com deployment');
+            this.config = process.env;
             this.config.DOMAIN = process.env.RENDER_EXTERNAL_URL;
+        } else {
+            const { error, parsed } = config();
+            if (error) {
+                throw new Error(
+                    `Failed to load .env variables: ${error.message}`,
+                );
+            }
+            if (!parsed) {
+                throw new Error(`Failed to load .env variables`);
+            }
+            this.config = parsed;
         }
         this.validateConfig(this.config);
     }
