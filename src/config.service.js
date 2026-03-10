@@ -24,7 +24,6 @@ export class ConfigService {
 
     validateConfig(config) {
         if (!config.BOT_TOKEN) throw Error('BOT_TOKEN is required');
-        if (!config.DOMAIN) throw new Error('DOMAIN is required');
     }
 
     get(key) {
@@ -33,5 +32,10 @@ export class ConfigService {
             throw new Error(`Failed to get .env variable: ${key}`);
         }
         return res;
+    }
+
+    getOptional(key, defaultValue = undefined) {
+        const res = this.config[key];
+        return res ?? defaultValue;
     }
 }
