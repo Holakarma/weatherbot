@@ -1,6 +1,6 @@
 import express from 'express';
 import { Telegraf } from 'telegraf';
-import { ConfigService } from './src/config.service';
+import { ConfigService } from './src/config.service.js';
 
 const bootstrap = (configService) => {
     const bot = new Telegraf(configService.get(BOT_TOKEN));
