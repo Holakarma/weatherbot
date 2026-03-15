@@ -3,6 +3,8 @@ import { config as loadDotenv } from 'dotenv';
 export interface AppConfig {
     botToken: string;
     weatherApiToken: string;
+    supabaseUrl: string;
+    supabaseAnonKey: string;
     domain?: string;
     port: number;
 }
@@ -39,6 +41,8 @@ export const loadConfig = (): AppConfig => {
     return {
         botToken: requireEnv('BOT_TOKEN'),
         weatherApiToken: requireEnv('WEATHER_API_TOKEN'),
+        supabaseUrl: requireEnv('SUPABASE_URL'),
+        supabaseAnonKey: requireEnv('SUPABASE_ANON_KEY'),
         domain,
         port: parsePort(process.env.PORT ?? '3000'),
     };

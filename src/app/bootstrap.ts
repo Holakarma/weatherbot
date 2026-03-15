@@ -1,11 +1,12 @@
-import type { Server } from 'node:http';
+﻿import type { Server } from 'node:http';
 import { loadConfig } from '../config/env.js';
-import { createWeatherApiClient } from '../integrations/weather-api.client.js';
+import { createWeatherApiClient } from '../integrations/weather/weather-api.client.js';
 import { runPolling } from '../transport/polling/runner.js';
 import { createBot } from '../transport/telegram/create-bot.js';
 import { runWebhookServer } from '../transport/webhook/server.js';
 import { createLogger } from '../shared/logger.js';
 import { RUNTIME_MODE, resolveRuntimeMode } from './runtime-mode.js';
+import { createSupabaseClient } from '../integrations/supabase/supabase.client.js';
 
 export const bootstrap = async (): Promise<void> => {
     const logger = createLogger();
@@ -14,9 +15,14 @@ export const bootstrap = async (): Promise<void> => {
     const weatherApiClient = createWeatherApiClient({
         token: config.weatherApiToken,
     });
+    const supabaseClient = createSupabaseClient({
+        url: config.supabaseUrl,
+        anonKey: config.supabaseAnonKey,
+    });
     const bot = createBot({
         token: config.botToken,
         weatherApiClient,
+        supabaseClient,
     });
 
     let webhookServer: Server | null = null;
@@ -50,3 +56,4 @@ export const bootstrap = async (): Promise<void> => {
     process.once('SIGINT', () => shutdown('SIGINT'));
     process.once('SIGTERM', () => shutdown('SIGTERM'));
 };
+

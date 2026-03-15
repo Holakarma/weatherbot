@@ -12,12 +12,10 @@ interface ResolveRuntimeModeInput {
 
 export const resolveRuntimeMode = ({
     nodeEnv = process.env.NODE_ENV,
-    lifecycleEvent = process.env.npm_lifecycle_event,
 }: ResolveRuntimeModeInput = {}): RuntimeMode => {
     const isProduction = nodeEnv === 'production';
-    const isStartCommand = lifecycleEvent === 'start';
 
-    if (isProduction || isStartCommand) {
+    if (isProduction) {
         return RUNTIME_MODE.WEBHOOK;
     }
 
