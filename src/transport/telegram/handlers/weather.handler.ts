@@ -1,10 +1,10 @@
-﻿import type { BotContext, TelegramBot } from '../types.js';
-import { ensureTelegramUserExists } from './text.message.service.js';
-import { TEXT_MESSAGE_COPY } from './text.message.ui.js';
-import { WEATHER_HANDLER_COPY } from './weather.handler.ui.js';
-import { buildWeatherReplyByLocation } from './weather.reply.js';
+import type { BotContext, TelegramBot } from '../types';
+import { ensureTelegramUserExists } from './text.message.service';
+import { TEXT_MESSAGE_COPY } from './text.message.ui';
+import { WEATHER_HANDLER_COPY } from './weather.handler.ui';
+import { buildWeatherReplyByLocation } from './weather.reply';
 
-const sendWeatherBySavedCity = async (ctx: BotContext): Promise<void> => {
+export const sendWeatherBySavedCity = async (ctx: BotContext): Promise<void> => {
     let savedCity: string | null = null;
 
     try {
@@ -42,10 +42,6 @@ const sendWeatherBySavedCity = async (ctx: BotContext): Promise<void> => {
 };
 
 export const registerWeatherHandler = (bot: TelegramBot): void => {
-    bot.command('weather', async (ctx) => {
-        await sendWeatherBySavedCity(ctx);
-    });
-
     bot.hears(WEATHER_HANDLER_COPY.buttonMyCityWeather, async (ctx) => {
         await sendWeatherBySavedCity(ctx);
     });

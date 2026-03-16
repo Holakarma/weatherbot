@@ -1,4 +1,4 @@
-import { bootstrap } from './src/app/bootstrap.js';
+import { bootstrap } from './src/app/bootstrap';
 
 bootstrap().catch((error: unknown) => {
     console.error('Startup error:', error);

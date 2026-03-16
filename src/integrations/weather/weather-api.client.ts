@@ -6,7 +6,7 @@ import type {
     GeocodeLocation,
     QueryParams,
     WeatherApiClientOptions,
-} from './weather-api.types.js';
+} from './weather-api.types';
 export type {
     Coordinates,
     CurrentWeatherResponse,
@@ -23,7 +23,7 @@ export type {
     WeatherMainBlock,
     WeatherSys,
     WeatherWind,
-} from './weather-api.types.js';
+} from './weather-api.types';
 
 const GEO_API_URL = 'http://api.openweathermap.org/geo/1.0/direct';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';

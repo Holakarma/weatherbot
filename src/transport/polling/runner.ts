@@ -1,5 +1,5 @@
-import type { Logger } from '../../shared/logger.js';
-import type { TelegramBot } from '../telegram/types.js';
+import type { Logger } from '../../shared/logger';
+import type { TelegramBot } from '../telegram/types';
 
 interface RunPollingInput {
     bot: TelegramBot;

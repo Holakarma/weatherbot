@@ -1,4 +1,4 @@
-﻿import { escapeMarkdownV2 } from '../../../shared/escape-markdown-v2.js';
+import { escapeMarkdownV2 } from '../../../shared/escape-markdown-v2';
 
 export const TEXT_MESSAGE_COPY = {
     emptyLocation: 'Отправь название города',

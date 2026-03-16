@@ -1,4 +1,4 @@
-﻿import type { BotContext } from '../types.js';
+import type { BotContext } from '../types';
 
 const isDuplicateKeyError = (error: { code?: string; message: string }): boolean =>
     error.code === '23505' || error.message.includes('duplicate key value');

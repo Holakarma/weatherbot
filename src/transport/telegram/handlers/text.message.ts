@@ -1,16 +1,16 @@
-﻿import { message } from 'telegraf/filters';
-import type { TelegramBot } from '../types.js';
+import { message } from 'telegraf/filters';
+import type { TelegramBot } from '../types';
 import {
     buildSaveCityKeyboard,
     consumePendingCitySelection,
     SAVE_CITY_ACTION_PATTERN,
-} from './text.message.keyboard.js';
+} from './text.message.keyboard';
 import {
     ensureTelegramUserExists,
     saveTelegramUserCity,
-} from './text.message.service.js';
-import { TEXT_MESSAGE_COPY } from './text.message.ui.js';
-import { buildWeatherReplyByLocation } from './weather.reply.js';
+} from './text.message.service';
+import { TEXT_MESSAGE_COPY } from './text.message.ui';
+import { buildWeatherReplyByLocation } from './weather.reply';
 
 export const registerTextMessageHandler = (bot: TelegramBot): void => {
     bot.action(SAVE_CITY_ACTION_PATTERN, async (ctx) => {

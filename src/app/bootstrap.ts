@@ -1,12 +1,12 @@
-﻿import type { Server } from 'node:http';
-import { loadConfig } from '../config/env.js';
-import { createWeatherApiClient } from '../integrations/weather/weather-api.client.js';
-import { runPolling } from '../transport/polling/runner.js';
-import { createBot } from '../transport/telegram/create-bot.js';
-import { runWebhookServer } from '../transport/webhook/server.js';
-import { createLogger } from '../shared/logger.js';
-import { RUNTIME_MODE, resolveRuntimeMode } from './runtime-mode.js';
-import { createSupabaseClient } from '../integrations/supabase/supabase.client.js';
+import type { Server } from 'node:http';
+import { loadConfig } from '../config/env';
+import { createWeatherApiClient } from '../integrations/weather/weather-api.client';
+import { runPolling } from '../transport/polling/runner';
+import { createBot } from '../transport/telegram/create-bot';
+import { runWebhookServer } from '../transport/webhook/server';
+import { createLogger } from '../shared/logger';
+import { RUNTIME_MODE, resolveRuntimeMode } from './runtime-mode';
+import { createSupabaseClient } from '../integrations/supabase/supabase.client';
 
 export const bootstrap = async (): Promise<void> => {
     const logger = createLogger();

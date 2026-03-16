@@ -1,5 +1,5 @@
-﻿import type { BotContext } from '../types.js';
-import { formatWeatherMessage, TEXT_MESSAGE_COPY } from './text.message.ui.js';
+import type { BotContext } from '../types';
+import { formatWeatherMessage, TEXT_MESSAGE_COPY } from './text.message.ui';
 
 export interface WeatherReplyPayload {
     cityName: string;
